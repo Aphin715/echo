@@ -1,0 +1,5 @@
+puts "What do you want to say"
+
+input = gets.chomp
+
+puts "You said: input
