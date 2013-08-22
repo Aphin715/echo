@@ -2,7 +2,7 @@ def playback (say)
   return "You said: #{say}"
 end
 
-puts "What do you want to say"
+puts "What do you want to say?"
 
 input = gets.chomp
 
@@ -23,4 +23,18 @@ elsif input == "I have a lot to say"
 else
   puts playback(input)
 end
+# input goes character by character to hash
+character_counts = {}
+input.each_char do |character|
+  unless character_counts.has_key?(character) || character == " "
+    character_counts[character] = 0
+  end
+  unless character == " "
+    character_counts[character] += 1
+  end
+end
 
+sorted_characters = character_counts.sort_by { |letter, number| number }
+
+puts "'#{sorted_characters.to_a[-2][0]}' is the second most used character in what you said."
+puts "'#{sorted_characters.to_a[-2][0]}' was used #{sorted_characters.to_a[-2][1]} times."
